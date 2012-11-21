@@ -1,0 +1,33 @@
+Nov 11 08:11:58 domU-12-31-39-0A-9E-7F kernel: [407792.788643] Character device registered successfully.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.591533] Character device truncated for writing.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.591823] Character device cannot be read when it is being updated.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.591925] Character device cannot be updated by more than one process.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.591990] Character device closed.
+
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.592245] Character device opened for reading.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.592306] Character device opened for reading.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.592360] Character device cannot be updated when it is being read.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.592412] Character device closed.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.592461] Character device closed.
+
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.592549] Character device truncated for writing.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.592682] Character device: kernel copy successful.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.592799] Character device closed.
+
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.592887] Character device opened for reading.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.592941] Character device opened for reading.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.592994] Character device: userspace copy successful.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.593085] Character device: userspace copy successful.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.593171] Character device closed.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.593215] Character device closed.
+
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.593297] Character device truncated for writing.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.593343] Character device: kernel copy successful.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.593484] Character device: Buffer is full. Now increase the buffer size to 40.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.593501] Character device: kernel copy successful.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.593588] Character device closed.
+
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.593674] Character device opened for reading.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.593726] Character device: userspace copy successful.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.593812] Character device: userspace copy successful.
+Nov 11 08:12:01 domU-12-31-39-0A-9E-7F kernel: [407795.593909] Character device closed.

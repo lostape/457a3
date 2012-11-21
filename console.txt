@@ -1,0 +1,113 @@
+$ sudo su
+
+$ tar xzvf CharDevice.tar.gz 
+CharDevice/
+CharDevice/CharDevice.c
+CharDevice/console.txt
+CharDevice/Makefile
+CharDevice/mknod
+CharDevice/rw.cpp
+CharDevice/simpletest.cpp
+CharDevice/simpletest.log
+CharDevice/test.cpp
+CharDevice/test.log
+
+$ cd CharDevice
+
+$ ls
+CharDevice.c  console.txt  Makefile  mknod  rw.cpp  simpletest.cpp  simpletest.log  test.cpp  test.log
+
+$ ./mknod.sh 
+
+$ ls /dev/ 
+....
+char_device
+....
+
+$ make
+make -C /lib/modules/3.6.2/build M=/home/ec2-user/A3 modules
+make[1]: Entering directory `/usr/src/kernels/linux-3.6.2'
+  CC [M]  /home/ec2-user/A3/CharDevice.o
+  Building modules, stage 2.
+  MODPOST 1 modules
+  CC      /home/ec2-user/A3/CharDevice.mod.o
+  LD [M]  /home/ec2-user/A3/CharDevice.ko
+make[1]: Leaving directory `/usr/src/kernels/linux-3.6.2'
+
+$ insmod CharDevice.ko 
+
+$ make simpletest
+g++ -o simpletest simpletest.cpp
+
+$ ./simpletest 
+Writer 1 opened the device for writing.
+Writer 1 wrote 20 bytes to the device.
+Data: LgyxmpHTHfjNUlYZcODs
+Reader 1 opened the device for reading.
+Writer 1 closed the device.
+
+Reader 1 read 20 bytes from the device.
+Data: LgyxmpHTHfjNUlYZcODs
+Reader 1 closed the device.
+
+$ rmmod CharDevice
+
+/***** Update the kernel module according to the assignment handout. *****/
+
+$ make
+make -C /lib/modules/3.6.2/build M=/home/ec2-user/A3 modules
+make[1]: Entering directory `/usr/src/kernels/linux-3.6.2'
+  CC [M]  /home/ec2-user/A3/CharDevice.o
+  Building modules, stage 2.
+  MODPOST 1 modules
+  CC      /home/ec2-user/A3/CharDevice.mod.o
+  LD [M]  /home/ec2-user/A3/CharDevice.ko
+make[1]: Leaving directory `/usr/src/kernels/linux-3.6.2'
+
+$ insmod CharDevice.ko 
+
+$ make test
+g++ -o test test.cpp
+
+$ ./test 
+Writer 1 opened the device for writing.
+Reader 1 cannot open the device for reading.
+Writer 2 cannot open the device for writing.
+Writer 1 closed the device.
+
+Reader 1 opened the device for reading.
+Reader 2 opened the device for reading.
+Writer 1 cannot open the device for writing.
+Reader 1 closed the device.
+Reader 2 closed the device.
+
+Writer 2 opened the device for writing.
+Writer 2 wrote 16 bytes to the device.
+Data: gyxmpHTHfjNUlYZc
+Writer 2 closed the device.
+
+Reader 1 opened the device for reading.
+Reader 2 opened the device for reading.
+Reader 1 read 16 bytes from the device.
+Data: gyxmpHTHfjNUlYZc
+Reader 2 read 16 bytes from the device.
+Data: gyxmpHTHfjNUlYZc
+Reader 1 closed the device.
+Reader 2 closed the device.
+
+Writer 2 opened the device for writing.
+Writer 2 wrote 19 bytes to the device.
+Data: DsoQHhikgzMOBXXcwJR
+Writer 2 wrote 16 bytes to the device.
+Data: FYjolfBlgeAjyobh
+Writer 2 closed the device.
+
+Reader 1 opened the device for reading.
+Reader 1 read 20 bytes from the device.
+Data: DsoQHhikgzMOBXXcwJRF
+Reader 1 read 15 bytes from the device.
+Data: YjolfBlgeAjyobh
+Reader 1 closed the device.
+
+$ rmmod CharDevice
+

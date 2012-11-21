@@ -1,0 +1,7 @@
+Nov 11 11:02:24 domU-12-31-39-0C-6E-EC kernel: [  462.834639] Character device truncated for writing.
+Nov 11 11:02:24 domU-12-31-39-0C-6E-EC kernel: [  462.835456] Character device: kernel copy successful.
+Nov 11 11:02:24 domU-12-31-39-0C-6E-EC kernel: [  462.835663] Character device opened for reading.
+Nov 11 11:02:24 domU-12-31-39-0C-6E-EC kernel: [  462.836446] Character device closed.
+
+Nov 11 11:02:24 domU-12-31-39-0C-6E-EC kernel: [  462.836735] Character device: userspace copy successful.
+Nov 11 11:02:24 domU-12-31-39-0C-6E-EC kernel: [  462.836854] Character device closed.
