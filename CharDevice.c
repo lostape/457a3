@@ -127,14 +127,13 @@ ssize_t chardev_read(struct file *filep, char *buff, size_t offset, loff_t *offp
 
 ssize_t chardev_write(struct file *filep,const char *buff,size_t count,loff_t *offp )
 {
-	int newsize = chunkSize;
 	char * temp_buffer;
-	
-	bufferCapacity = bufferCapacity - count;
-	if(bufferCapacity == 0){
-		newsize = 
-		temp_buffer = (char*) kmalloc (chunkSize, GFP_KERNEL);
-		memcpy(temp_buffer, chardev_buffer, chunkSize);
+	int space;
+
+	if(space == 0){
+		temp_buffer = (char*) kmalloc (bufferCapacity + chunkSize, GFP_KERNEL);
+		memcpy(temp_buffer, chardev_buffer, bufferCapacity);
+		bufferCapacity += chunkSize;
 	}
     // Copy from user space buffer to kernel space chardev_buffer
     if (copy_from_user(chardev_buffer, buff, count) != 0 )
