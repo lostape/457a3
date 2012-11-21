@@ -42,6 +42,7 @@ const int chunkSize = 20;       // The size of a chunk in the buffer
 int bufferCapacity = 0;  // Initial buffer capacity, will grow as needed
 char * chardev_buffer;    // The buffer for the device
 int space;
+int pos = 0;
 
 // Initialize and register the character device in the kernel
 static int init_chardevice(void)
@@ -130,26 +131,41 @@ ssize_t chardev_read(struct file *filep, char *buff, size_t offset, loff_t *offp
 ssize_t chardev_write(struct file *filep,const char *buff,size_t count,loff_t *offp )
 {
 	char * temp_buffer;
-	
-	space = space - count;
 
-	if(space == 0){
+	if(count > space){
 		temp_buffer = (char*) kmalloc (bufferCapacity + chunkSize, GFP_KERNEL);
 		memcpy(temp_buffer, chardev_buffer, bufferCapacity);
 		bufferCapacity += chunkSize;
-	}
-    // Copy from user space buffer to kernel space chardev_buffer
-    if (copy_from_user(chardev_buffer, buff, count) != 0 )
-    {
-        printk(KERN_ALERT "Character device: kernel copy failed!\n" );
-        count = 0;
-    }
-    else
-    {
+
+		// Copy from user space buffer to kernel space chardev_buffer
+		// start from buff + prev. position
+    		if (copy_from_user(chardev_buffer + pos, buff, count) != 0 )
+    		{
+       			 printk(KERN_ALERT "Character device: kernel copy failed!\n" );
+     			 count = 0;
+   		}
+    		else
+    		{
     	
-        printk(KERN_INFO "Character device: kernel copy successful.\n" );
-    }
-    
-    return count;
+    			    printk(KERN_INFO "Character device: kernel copy successful.\n" );
+   		}
+	}
+	else
+	{
+		if (copy_from_user(chardev_buffer + pos, buff, count) != 0 )
+    		{
+       			 printk(KERN_ALERT "Character device: kernel copy failed!\n" );
+     			 count = 0;
+   		}
+    		else
+    		{
+    	
+    			    printk(KERN_INFO "Character device: kernel copy successful.\n" );
+   		}
+
+	}
+        
+	pos += count;	
+    	return count;
 }
 
