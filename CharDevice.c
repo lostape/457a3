@@ -41,6 +41,7 @@ module_exit(shutdown_chardevice);       // driver exit entry point
 const int chunkSize = 20;       // The size of a chunk in the buffer
 int bufferCapacity = 0;  // Initial buffer capacity, will grow as needed
 char * chardev_buffer;    // The buffer for the device
+int space;
 
 // Initialize and register the character device in the kernel
 static int init_chardevice(void)
@@ -81,6 +82,7 @@ int chardev_open(struct inode *inode, struct file *filep)
         kfree(chardev_buffer);          // truncate the buffer
         chardev_buffer = (char*) kmalloc (chunkSize, GFP_KERNEL);
         bufferCapacity = chunkSize;
+        space = chunkSize;
         printk(KERN_INFO "Character device truncated for writing.\n");
         return 0;
     }
