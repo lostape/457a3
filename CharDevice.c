@@ -130,7 +130,8 @@ ssize_t chardev_read(struct file *filep, char *buff, size_t offset, loff_t *offp
 ssize_t chardev_write(struct file *filep,const char *buff,size_t count,loff_t *offp )
 {
 	char * temp_buffer;
-	int space;
+	
+	space = space - count;
 
 	if(space == 0){
 		temp_buffer = (char*) kmalloc (bufferCapacity + chunkSize, GFP_KERNEL);
